@@ -10,6 +10,15 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CloudNativeEcommerce.ApiSer
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CloudNativeEcommerce.Web", "CloudNativeEcommerce.Web\CloudNativeEcommerce.Web.csproj", "{4F48B594-0BD0-11A0-7344-7B2B8836A8A6}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "k8s", "k8s", "{02EA681E-C7D8-13C7-8484-4AC65E1B71E8}"
+	ProjectSection(SolutionItems) = preProject
+		api-service.yaml = api-service.yaml
+		ingress.yaml = ingress.yaml
+		redis.yaml = redis.yaml
+		sqlserver.yaml = sqlserver.yaml
+		web-app.yaml = web-app.yaml
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU

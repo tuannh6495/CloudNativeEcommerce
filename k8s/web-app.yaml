@@ -1,0 +1,40 @@
+# k8s/web-app.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: web-app
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: web-app
+  template:
+    metadata:
+      labels:
+        app: web-app
+    spec:
+      containers:
+      - name: web-app
+        image: localhost/cloudnative-web:latest
+        imagePullPolicy: Never
+        ports:
+        - containerPort: 8080
+        env:
+        - name: ASPNETCORE_ENVIRONMENT
+          value: "Production"
+        - name: services__apiservice__https__0
+          value: "http://api-service"
+        - name: services__apiservice__http__0  
+          value: "http://api-service"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: web-app
+spec:
+  selector:
+    app: web-app
+  ports:
+  - port: 80
+    targetPort: 8080
+  type: LoadBalancer
